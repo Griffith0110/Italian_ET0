@@ -1,5 +1,7 @@
 # Italian_ET0
 
+<img width="1067" height="1164" alt="parte1" src="https://github.com/user-attachments/assets/b8f74e63-690f-4d88-9141-03ab2993ae03" />
+
 A small Streamlit app to retrieve and visualize daily reference evapotranspiration (ET0) for locations in Italy using the Open-Meteo API.
 
 Features
@@ -17,9 +19,6 @@ Installation
 
 Run
 - From the repository root: `streamlit run main.py`
-
-Demo
-- Try the live demo: https://italian-et0.streamlit.app/
 
 Notes
 - Geocoding is done with Nominatim (OpenStreetMap); please respect its usage policy and rate limits.
