@@ -2,7 +2,7 @@
 
 A small Streamlit app to retrieve and visualize daily reference evapotranspiration (ET0) for Italian locations using the Open-Meteo API.
 
-ET0 in this project is calculated using the FAO evapotranspiration values provided by Open-Meteo and is combined with precipitation to show a daily "ET0 total" (et0_fao_evapotranspiration − precipitation_sum).
+ET0 in this project is calculated using the FAO evapotranspiration values provided by Open-Meteo and is combined with precipitation to show a daily "ET0 total" (et0_fao_evapotranspiration − precipitation).
 
 ## Features
 - Search by city, address, region, or enter `Italy` for a national overview.
@@ -38,6 +38,8 @@ Recommended: create a virtual environment.
   2. Install dependencies:
      - pip install -r requirements.txt
 
+You can also install packages individually if you prefer.
+
 ## Run
 
 From the repository root:
@@ -61,6 +63,11 @@ Open the displayed local URL in your browser, enter a location (e.g., "Rome, Ita
 - requests-cache
 - retry-requests
 
+## Requirements
+A machine-readable requirements file is included as `requirements.txt`. Install with:
+
+- pip install -r requirements.txt
+
 ## Limitations & TODO
 - No explicit error handling for missing geocoding results (e.g., when the location is not found). We can add user-friendly messages.
 - No tests included.
@@ -70,12 +77,12 @@ Open the displayed local URL in your browser, enter a location (e.g., "Rome, Ita
   - Unit tests and CI.
 
 ## Contributing
-Contributions are welcome. Open an issue or PR describing your change. If you want, I can prepare a PR that:
-- Adds `README.md` to the repo (this file),
-- Creates `requirements.txt`,
-- Adds a basic `.gitignore` and optional LICENSE (MIT by default).
+Contributions are welcome. Open an issue or PR describing your change. If you'd like, I can prepare changes such as:
+- Improving error handling and user messages
+- Adding export or configuration options
+- Adding tests and CI
 
 ## License
-Add a license file (e.g., `LICENSE` with MIT) if you want this project to be openly licensed. I can add one for you — tell me which license you'd prefer.
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
