@@ -10,7 +10,7 @@ import streamlit as st
 st.subheader("🌿 ET0", divider="green", text_alignment="center")
 geolocator = Nominatim(user_agent="et0")
 location_query = st.text_input(
-    "Geolosition",
+    "Geolocation",
 )
 if location_query:
     location = geolocator.geocode(location_query, timeout=10)
