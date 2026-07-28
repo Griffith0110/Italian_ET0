@@ -8,8 +8,9 @@ import streamlit as st
 
 
 st.subheader("🌿 ET0", divider="green", text_alignment="center")
-
-geolocator = Nominatim(user_agent="ET0")
+user_agent=st.text_input("Insert an invented username")
+if user_agent:
+    geolocator = Nominatim(user_agent=user_agent)
 location_query = st.text_input(
     "Geoposition",
 )
