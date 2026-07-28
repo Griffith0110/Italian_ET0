@@ -18,6 +18,9 @@ Installation
 Run
 - From the repository root: `streamlit run main.py`
 
+Demo
+- Try the live demo: https://italian-et0.streamlit.app/
+
 Notes
 - Geocoding is done with Nominatim (OpenStreetMap); please respect its usage policy and rate limits.
 - Responses are cached locally to reduce API calls.
