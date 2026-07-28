@@ -5,10 +5,7 @@ import pandas as pd
 import requests_cache
 from retry_requests import retry
 import streamlit as st
-
-
 st.subheader("🌿 ET0", divider="green", text_alignment="center")
-
 geolocator = Nominatim(user_agent="ET0")
 location_query = st.text_input(
     "Geoposition",
@@ -16,14 +13,10 @@ location_query = st.text_input(
 )
 if location_query:
     location = geolocator.geocode(location_query)
-
     # Setup the Open-Meteo API client with cache and retry on error
     cache_session = requests_cache.CachedSession(".cache", expire_after=3600)
     retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
     openmeteo = openmeteo_requests.Client(session=retry_session)
-
-    # Make sure all required weather variables are listed here
-    # The order of variables in hourly or daily is important to assign them correctly below
     url = "https://api.open-meteo.com/v1/forecast"
     params = {
         "latitude": location.latitude,
@@ -33,14 +26,10 @@ if location_query:
         "forecast_days": 16,
     }
     responses = openmeteo.weather_api(url, params=params)
-
     response = responses[0]
-
-    # Process daily data. The order of variables needs to be the same as requested.
     daily = response.Daily()
     daily_et0_fao_evapotranspiration = daily.Variables(0).ValuesAsNumpy()
     daily_precipitation_sum = daily.Variables(1).ValuesAsNumpy()
-
     daily_data = {
         "date": pd.date_range(
             start=pd.to_datetime(daily.Time(), unit="s", utc=True),
@@ -49,11 +38,9 @@ if location_query:
             inclusive="left",
         ).tz_convert(None)
     }
-
     daily_data["et0_fao_evapotranspiration"] = daily_et0_fao_evapotranspiration
     daily_data["precipitation_sum"] = daily_precipitation_sum
     daily_data["et0_total"] = daily_et0_fao_evapotranspiration - daily_precipitation_sum
-
     daily_dataframe = pd.DataFrame(data=daily_data)
     with st.container(horizontal_alignment="center", border=True):
         st.badge(f" {location.address}", color="green", icon="🏙️")
