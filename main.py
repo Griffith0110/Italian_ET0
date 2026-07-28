@@ -6,12 +6,6 @@ from retry_requests import retry
 import streamlit as st
 st.subheader("🌿 ET0", divider="green", text_alignment="center")
 geolocator = Nominatim(user_agent="ET0")
-geocode = RateLimiter(
-    geolocator.geocode,
-    min_delay_seconds=1,
-    max_retries=3,
-    error_wait_seconds=5.0,
-)
 location_query = st.text_input("Geolocation").strip()
 if location_query:
     location = geolocator.geocode(location_query)
