@@ -1,5 +1,5 @@
+from geopy import location
 from geopy.geocoders import Nominatim
-from geopy.extra.rate_limiter import RateLimiter
 import openmeteo_requests
 import pandas as pd
 import requests_cache
@@ -9,25 +9,12 @@ import streamlit as st
 
 st.subheader("🌿 ET0", divider="green", text_alignment="center")
 
-# Inserito un User-Agent identificativo per rispetare le policy di Nominatim
 geolocator = Nominatim(user_agent="ET0")
-
-# RateLimiter garantisce un intervallo minimo di 1 secondo tra le chiamate
-geocode_with_rate_limit = RateLimiter(geolocator.geocode, min_delay_seconds=1)
-
-# Cache per evitare che ad ogni re-run di Streamlit venga richiamato l'API per la stessa città
-
-
-@st.cache_data(ttl=86400)
-def get_location(query):
-    return geocode_with_rate_limit(query, timeout=10)
-
-
 location_query = st.text_input(
     "Geoposition",
 )
 if location_query:
-    location = get_location(location_query)
+    location = geolocator.geocode(location_query, timeout=10)
 
     if location:
         # Setup the Open-Meteo API client with cache and retry on error
