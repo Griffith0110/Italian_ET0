@@ -64,7 +64,7 @@ if location_query:
                 color="yellow",
                 icon="🧭",
             )
-            st.badge(f" {location.latitude} m asl", color="blue", icon="🗻")
+            st.badge(f" {response.Elevation()} m asl", color="blue", icon="🗻")
             st.divider()
             st.dataframe(daily_dataframe, hide_index=True, width="content")
             st.divider()
