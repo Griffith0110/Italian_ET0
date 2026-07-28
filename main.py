@@ -14,7 +14,7 @@ location_query = st.text_input(
     "Geoposition",
 )
 if location_query:
-    location = geolocator.geocode(location_query)
+    location = geolocator.geocode(location_query,timeout=10)
 
     # Setup the Open-Meteo API client with cache and retry on error
     cache_session = requests_cache.CachedSession(".cache", expire_after=3600)
