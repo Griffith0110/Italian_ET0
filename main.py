@@ -9,10 +9,9 @@ import streamlit as st
 
 st.subheader("🌿 ET0", divider="green", text_alignment="center")
 
-geolocator = Nominatim(user_agent="ET0")
+geolocator = Nominatim(user_agent="Italian_ET0")
 location_query = st.text_input(
     "Geoposition",
-    help="Insert an italian city name or an address, or a region,or input just Italy to know the national ET0",
 )
 if location_query:
     location = geolocator.geocode(location_query)
