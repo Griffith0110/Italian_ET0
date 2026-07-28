@@ -1,4 +1,5 @@
-from geopy import Nominatin
+from geopy import location
+from geopy.geocoders import Nominatim
 import openmeteo_requests
 import pandas as pd
 import requests_cache
