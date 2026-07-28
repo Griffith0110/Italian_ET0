@@ -74,3 +74,7 @@ if location_query:
             y_label="mm/m²",
             stack=True,
         )
+        st.caption(
+        "Weather data by [Open-Meteo](https://open-meteo.com/) (CC BY 4.0) "
+        "• Geocoding by [OpenStreetMap](https://www.openstreetmap.org/copyright)"
+        )
