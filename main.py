@@ -1,4 +1,4 @@
-import geopy
+from geopy import Nominatin
 import openmeteo_requests
 import pandas as pd
 import requests_cache
